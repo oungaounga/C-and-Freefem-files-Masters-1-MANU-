@@ -1,0 +1,6 @@
+To compile : 
+
+>>> g++ class_definite_integral.cpp -c
+>>> g++ main_class_integral.cpp -c
+>>> g++ main_class_integral.cpp class_definite_integral.cpp -o main_class_integral
+>>> ./ main_class_integral

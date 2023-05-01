@@ -1,0 +1,63 @@
+- Pointeurs : 
+    - Def : . Variable contenant les adresses d'une variable, fonction, objet..
+            . Le type du pointeur est le type de l'objet de l'objet vers lequel il pointe
+
+    - L'opérateur * : (Suivi d'un pointeur) Fournit le contenu de l'adresse
+    - L'opérateur & : (Suivi d'un objet) Fournit l'adresse de l'objet qui le suit
+
+    Donc : 
+    int *ad;
+    int n = 20;
+    ad = &n;
+    *ad = 30;
+
+    ad est un pointeur sur un entier, il contient donc une adresse,
+    &n est une adresse, donc on peut écrire ad = &n.
+    *ad est le contenu de l'adresse de ad, donc *ad est un entier, donc on peut écrire *ad = 30
+
+
+    L'overload d'objet :
+    Il faut savoir qu'un opérateur est soir unaire soir binaire.
+    La liste d'opérateur de C++ est (pour l'instant) définie.
+    Ce qui permet de modifier nos classes comment on veut, des objets 
+    qui ont leurs propres opérateurs.
+    Rmq : 
+        - [] est unaire (il prend un seul argument)
+        - Operator : Effectue un operation. Unaire : Effectue une operation
+        sur un seul argument. Binaire : Effectue une operation sur deux
+        argument etc..
+        - L'opérateur [] fournit la i-ième (-1) valeur du vecteur
+        souhaité. Ici nos vecteur sont des doubles, donc la fonction 
+        opetaor+ renvoie un double, elle est donc du type double..
+
+
+Dans les classes :
+Le mot clé protected : C'est privée + le droit d'accès au classes dérivées
+Car : Prive empeche les classes dérivées d'avoir accès aux données privées
+
+Classe D dérivée de La classe B:
+Si un pointeur sur un objet de D, il devient (au cas de besoin) un pointeur
+à un objet de B !!
+
+Une méthode virutelle : Permet d'adapter une méthode à chaque sous classe;
+
+Quand on a une classe parents et des classes Dérivées :
+    supposons P est la classe parents
+    D1 et D2 deux classes dérivées
+    On a une opération virtual (définie dans la classe parents !!) 
+    dans la classe parent, l'opération devrait donc être adaptée dans chacun des classe 
+    dérivées.
+    Il faut que notre opération reconnaissent quelle données (ou autre opération) choisir,
+    pour faire, on se met dans main:
+    La manière de définir des objet est différente :
+    Si on veut définir un objet de classe déerivée D1 :
+    >>P * pt = new D1()
+    Ici, on défini un pointeur vers P qui contient l'adresse
+    d'un objet de D1, ce qui est permis graçe à la 1ère règles d'héritage
+    >>(*pt)*Vector
+    et là c'est l'opération prduit avec vecteur de nos matrixe( ici les Dérivées
+    c'est matrice pleine ou creuse) 
+         
+
+Remarque : Virtual : Concerne toute méthode qui doit être adapté à chaque
+classe dérivée

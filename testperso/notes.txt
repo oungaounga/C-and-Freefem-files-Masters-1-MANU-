@@ -1,0 +1,145 @@
+i/o : in out, flux d'entrée sortie
+
+
+Convetion d'initialisations de variables :
+    - Nommer les constantes avec des Majuscules.
+    - Pour nommer des fonctions : On est le + précis possible : par exemple une fonction qui calcule une intégrale : on la nomme integrate.
+    - On peut créer un type de variable hors de celles qui existent déjà dans le language. Pour cela : On initialise le type de variable,
+    en décrivant, puis on peut en initialisant des variables.
+    - Le booléen faux est représenté par 0, le booléen vrai est représenté par n'importe quel autre entier. par exemple, quand on a un calcul, on peut 
+    considérer le résultat comme un booléen, si il est nul c'est faux sinon c'est correct, on peut même avoir un peu plus d'imagination (cf le type pointer, pointeur null)
+    - Type de Variable : Enumerators : une 
+    - La commande typedef est très utilise pour définir une fois un type de variable et la nommer
+    - Les matrices sont des vecteurs de vecteurs ie : vector<vector<double*>> 
+    
+
+- Incrementation : 
+    - i++ affiche i (avant l'addition) et i devient i+1
+    - ++i affiche i+1 et i devient aussi i+1
+    pour les boucles où on a pas à afficher la variable i, il est préferable d'utiliser ++i, car elle ne crée pas de mémorie supplémentaire pour
+    stocker le i précedent
+
+
+L'opérateur ternaire "?:" :
+par exemple : 
+        a>b?a:b // if a>b return a, otherwise return b
+
+
+mots clés :
+    - Increase : incrémentation, decrease : décrémentation
+
+
+tout ce qui est boucle : si on a déj déclaré une variable i, qu'on poursuit notre code avec une boucle while, qui tourne avec une variable incréementé à l'intérieur
+si on met while(int i=0, i<10, ++i) on aura pas d'erreur psq le i dans le while est propre et différent du i à l'exterieur
+
+
+un pointeur est une variable (objet) qui contient les emplacement d'autre variables, ie l'adresse dans la mémoire d'autres variables
+On peut en définir vers n'importe quel type qu'on a déjà défini et les types brutes (ie qui sont définis de base)
+Sytnaxe : 
+int * a; // signifie que a est un pointeur vers un objet de type entier
+
+Un pointeur ne pointe uniquement que vers un seul objet !!!
+
+Tant qu'on ne fait pas pointer un pointeur vers un objet specifique, c'est un pointeur indéfini (dangling pointer)
+Il faut l'associer à un autre objet
+
+Syntaxe :
+int * a = nullptr; // signifie que a est un pointeur non défini, et on déclare qu'il est non définit avec l'égalité nullptr
+int * a = 0; //on préfère l'écriture avec nullptr, ici l'adresse de 0 n'est pas pointé par a
+
+Notion de réference pour les pointeur :
+Si je dispose d'un objet, comment est ce que je peux récupérer son adresse : grace à l'opérateur & :
+
+Syntaxe : 
+int a = 5
+int * pa = 0
+pa = &a //pointe à l'adresse de a
+
+Résumé pointeur :
+Object qui renvoie vers l'adresse d'une variable, renvoie uniquement à une seule variable
+Déclaration : 
+int a = 5; définie un entier
+int * pa = nullptr; définie un pointeur non défini
+pa = &a; définit le pointeur pa vers a (graçe à l'opérateur &)
+*pa = 7; donne la valeur de 7 à la variable pointé par pa (graçe à l'opérateur *)
+
+
+Attention : 
+Quand on utilise un pointeur ou une réference à l'interieur d'une boucle, elle est spécéfique à la boucle
+
+il n y a pas de bound check en C++, càd que si on fait une boucle de i sur len(v) (v étant un vecteur de taille finie), le compilateur ne va pas signaler une erreur si on dépasse len(v)
+
+l'opérateur new : Dynamic memory management : (cf diapo prof)
+et l'opérateur delete (cf diapo prof)
+
+Structure switch :
+    Pour faire plusieurs tâches avec les mêmes variables ou données
+
+
+void g(double const &a, vector<double> & v)
+        //& càd que a et v sont des réferences
+        //const avant a veut dire que g ne peut pas modifier a
+
+
+la signature d'une fonction c'est ses arg. arg différents, fonctions différents
+le type de la fonction ne permet pas de différencier, 
+par exemple 
+
+Toutes les variables déclarées à l'interieur de la fonctions sont locales à la fonctions (g(T arg1, T arg2)..)
+
+page 83 : 
+    f (double a , double & b , double const & c):
+    - a est décalrée comme copie, la variable une fois mangé par la fonction n'est qu'une copie
+    - b est déclarée par réference, donc les modification seront globale, des repercutions sur b
+    - déclaration par réference constante : on ne fait pas de copies de c, mais les changments sur c seront uniquement locaux.
+
+    ctrl s
+    puis ctrl alt n pour rentrer dans un kerbel c++
+
+    & est : réference 
+
+    Commande pour tourner fichier avec headers files : 
+    Il faut que tout les fichiers soient dans le même dossier
+    fonction principale s'appelle main.cpp
+    fonction header est f.cpp
+    commandes : 
+        >>g++ main.cpp f.cpp -o main
+        >>./main
+
+
+    pour les headers classes : 
+    Quand on définit et on déclare sur class.cpp et class.hpp, les mots clés sont :
+
+        >>g++ main.cpp class.cpp -o main
+        >>./main
+
+
+Série 2 : 
+Les classes et les structs :
+https://docs.microsoft.com/fr-fr/cpp/cpp/class-cpp?view=msvc-170
+
+class.hpp et class.cpp
+séparation de la définition et de la déclaration
+
+
+DESTRUCTEUR : 
+particulièrement utile quand on a utilisé l'opérateur new
+Déclaration : 
+    ~class()
+    c'est le tilde
+
+
+
+
+
+const & : réference constante
+
+
+méchanisme de friendship : 
+
+les réference à une variable "&" c'est quand in veut modifier une variable
+quand on déclare une fonction avec des arguements tq foo(int, double), une fois la fonction appelée
+elle créera des copies des deux variables qu'elle changera uniquement en local.
+Quand on déclare une fonction avec des arg tq foo(int &, double &), la fonction, une fois appelée, ira chercher
+les variables en questions et les modifier.
+Referencer, c'est ordonner d'aller à la source..

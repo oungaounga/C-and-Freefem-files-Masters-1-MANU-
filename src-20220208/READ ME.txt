@@ -1,0 +1,4 @@
+for compilation, in terminal : 
+>> g++ trapezoidal.cpp -c
+>> g++ main_trapeze.cpp trapezoidal.cpp -o main
+>> ./main
